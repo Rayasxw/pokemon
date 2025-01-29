@@ -1,13 +1,30 @@
 .pokemon-card {
+    padding: 15px 12px;
+    text-align: center;
+}
+.pokemon {
+    width: 340px;
     border: 1px solid #fff;
     border-radius: 15px;
-    padding: 10px;
-    margin: 10px;
-    width: 340px;
-    text-align: center;
+    box-sizing: border-box;
 }
 
 .pokemon-card img {
     width: 120px;
     height: 120px;
+}
+.pokemon-card p {
+    font-size: 24px;
+}
+.pokemon-card button {
+    width: 316px;
+    height: 42px;
+    background-color: #DB00FF;
+    border-radius: 10px;
+    border: none;
+}
+button a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #fff;
 }

@@ -6,13 +6,25 @@ import Pagination from '../../components/pagination/Pagination'
 
 function PokemonPage() {
     const [pokemon, setPokemon] = useState([])
+    const [offset, setOffset] = useState(0)
+    const limit = 12
+    const page = offset / limit + 1
     const URL = 'https://pokeapi.co/api/v2/pokemon/'
 
     useEffect(() => {
-        axios.get(URL).then((response) => {
+        axios.get(`${URL}?limit=${limit}&offset=${offset}`).then((response) => {
             setPokemon(response.data.results)
         })
-    }, [])
+    }, [offset])
+
+    const handlePrev = () => {
+        if (offset > 0) {
+            setOffset(prev => prev - limit)
+        }
+    } 
+    const handleNext = () => {
+        setOffset(prev => prev + limit)
+    }
 
     return (
         <div className={styles.pokemonPage}>
@@ -23,7 +35,7 @@ function PokemonPage() {
                     <PokemonCard key={index} url={poke.url} name={poke.name} />
                 ))}
             </div>
-            <Pagination/>
+            <Pagination prev={handlePrev} next={handleNext} page={page}/>
         </div>
     )
 }

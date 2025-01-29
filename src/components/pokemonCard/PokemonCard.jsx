@@ -13,10 +13,19 @@ function PokemonCard({ url, name }) {
         fetchPokemonDetails()
     }, [url])
 
+    const capitalizeFirstLetter = (string) => {
+        return string.charAt(0).toUpperCase() + string.slice(1)
+    }
+
     return (
-        <div className="pokemon-card">
-            <img src={image || '/images/default.png'} alt={name} />
-            <p>{name}</p>
+        <div className="pokemon">
+            <div className="pokemon-card">
+                <img src={image || '/images/default.png'} alt={name} />
+                <p>{capitalizeFirstLetter(name)}</p>
+                <button>
+                    <a href="#">Подробнее</a>
+                </button>
+            </div>
         </div>
     )
 }
